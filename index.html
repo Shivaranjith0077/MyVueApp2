@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+    <style>
+        .box{
+            padding: 100px 0;
+            width: 400px;
+            text-align: center;
+            background-color: #ddd;
+            margin: 20px;
+            display: inline-block;
+        }
+        .image{
+            height: 160px;
+            display: inline-flex;
+        }
+        body{
+            background: #eee;
+            max-width: 960px;
+            margin: 20px auto;
+        }
+        p , h3 , ul{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style-type: none;
+            background: #fff;
+            margin: 20px auto;
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        li.fav{
+            background: #ff9ed2;
+            color: white;
+            
+
+        }
+
+    </style>
+</head>
+
+
+
+<body>
+    <h1>Hello World</h1>
+    <div id="show">
+        <!-- attribute Binding -->
+        <a :href="url">Best Website</a>
+
+
+        <div v-if="value">
+            <ul>
+                <li v-for="book in books" :class="{fav:book.isfav}">
+                    <img class="image" :src="book.img" :alt="book.title"> 
+                    <h1>{{book.title}}</h1>
+                    <h2>{{book.author}}</h2>
+                    <h3>{{book.age}}</h3>
+                </li>
+            </ul>                                                                                            
+            <button @click="age++">Increase Age</button>
+            <button @click="age--">Decrese Age</button>
+            <button @click="changeBook">Change Book</button>
+        </div>
+        <button @click="close">
+            <span v-if="value">close books</span>
+            <span v-else>open books</span>
+        </button>
+        <div v-show="value">Displaying Books</div>
+
+        <br>
+
+        <div class="box" @mouseover="handleevents">Mouse Over</div>
+        <div class="box" @mouseleave="handleevents">Mouse Leave</div>
+        <div class="box" @dblclick="handleevents">Double  Click</div>
+        <div class="box" @mousemove="handlemousemove">Position {{x}}-{{y}}</div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+
+
+</html>
